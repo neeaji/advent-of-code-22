@@ -27,3 +27,5 @@ elvs.sort(reverse=True)
 #print(elvs)
 top_three_elvs = elvs[:3]
 print(sum(top_three_elvs))
+
+
