@@ -71,30 +71,24 @@ def compute_total_score(outcome_score, shape_score):
     return total_score
 
 
-# f = open("day2_input.txt","r")
-# input_list = f.readlines()
-# #lines = f.read().strip().split("\n")
-# #result = input_list.split(',')[:3]
-# #lines.append('')
-# #print(input_list)
-# print(input_list)
-# for i in input_list:
-#     opponent = str(input_list[i])
-# #print(opponent)
-# #me = input_list[2][2]
-# #print(me)
+f = open("day2_input.txt", "r")
+input_list = f.read().strip().split("\n")
 
-# given an input string (= round 1)
-input_string = 'A Z'
+print(input_list)
+total_score_for_all_rounds = 0
+for my_input in input_list:
+    print('the n-th time in the loop')
+    opponent = my_input[0]
+    me = my_input[2]
+    print(f'opponent chose the shape {opponent}')
+    print(f'I chose the shape {me}')
 
-# extract the first index
-opponent = input_string[0]
+    my_outcome = decide_outcome(opponent, me)
+    my_outcome_score = compute_outcome_score(my_outcome)
+    my_shape_score = compute_shape_score(me)
+    total_for_a_round = compute_total_score(my_outcome_score, my_shape_score)
+    total_score_for_all_rounds = total_score_for_all_rounds + total_for_a_round
 
-# extract the third index
-me = input_string[2]
+# compute the final score (sum of all rounds)
+print(total_score_for_all_rounds)
 
-print(f'The opponent showed the shape {opponent}')
-print(f'I showed the shape {me}')
-
-result = decide_outcome(opponent, me)
-print('the outcome of this round is ', result)
